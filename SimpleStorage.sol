@@ -7,7 +7,7 @@ contract SimpleStorage {
     function get() public view returns(uint) {
         return storageData;
     }
-    // yaha virtual written to allow overriding of the function in the inheritance file
+
     function set(uint n) public virtual {
         storageData = n;
     }
