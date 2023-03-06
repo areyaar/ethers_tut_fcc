@@ -6,6 +6,7 @@ async function main(){
    // so we have to connect to this rpc
 
    const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:7545"); // provider helps us connect to blockchain
+
    const wallet = new ethers.Wallet("0x574b28ace2453c581802d28ba223266f47c8feed05f0bed0ba61e8bb6b36e53a",
         provider); // isse we are getting hold of a wallet -> private key is of ganache
     // ideal to use .env here for private key
@@ -20,8 +21,17 @@ async function main(){
     const contractFactory = new ethers.ContractFactory(abi, binary, wallet);
     console.log("deploying please wait!");
     const contract = await contractFactory.deploy();
+    // deploy ke andar we can specify things to be done while deploying
+    // eg deploy({gasPrice: 1000000}) -> this contract will be deployed with gasPrice this
     console.log(contract);
-
+    // what if we wanna wait one block ka confirmation before aything to  make sure it is in the blockchain
+    // deployment receipts
+    // const transactionReceipt = await contract.deployTransaction.wait(1); //it will wait one block before returning anything
+    // console.log("here is the deployment transaction");
+    // console.log(contract.deployTransaction);
+    // console.log("here it the transaction receipt"); // we will only get this if we wait for a block confirmation
+    // console.log(transactionReceipt);
+// next is deploy1 sending raw data lecture se
 
 
 
